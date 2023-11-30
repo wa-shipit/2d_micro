@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+	main,p,form,input,label {
+		margin: 0;
+		padding: 0;
+	}
+	#wrap {
+		text-align: center;
+		width: 1000px;
+	}
+	.form-group {
+		text-align: center;
+		border: solid 2px #000;
+	}
+</style>
+<title>ログインページ</title>
+</head>
+<body>
+	<main>
+		<div id="wrap">
+			<form th:action="@{/miclogin}" method="POST" class="form-group">
+				<label for="loginid">ログインID</label>
+				<input type="text" id="loginid"
+					name="micloginid" maxlength="16" required><br>
+				<label for="pw">パスワード</label>
+				<input type="password" id="pw" name="micpw" maxlength="16" required>
+				<input type="submit" value="ログイン">
+			</form>
+		</div>
+	</main>
+</body>
+</html>
