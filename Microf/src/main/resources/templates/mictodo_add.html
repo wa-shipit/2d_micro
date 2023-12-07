@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登録</title>
+</head>
+<body>
+
+<h1>予定登録</h1>
+<form th:action="@{/micadd}" method="POST">
+月：<input type="text" name="month">
+日：<input type="text" name="day">
+予定：<input type="text" name="todo">
+<input type="submit">
+</form>
+
+
+</body>
+</html>
