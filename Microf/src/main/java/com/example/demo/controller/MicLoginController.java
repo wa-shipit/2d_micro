@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpSession;
 
-
 /**
  *
  * @author 澁川匠太郎
@@ -44,14 +43,14 @@ public class MicLoginController {
 		 * メッセージをmodelにいれてログインページを表示する。
 		 * ヒットした場合はホーム画面にリダイレクトをかける。
 		 */
-		if(micloginid.length() > 16) {
+		if (micloginid.length() > 16) {
 			model.addAttribute("errormessageID", "IDが長すぎます");
 		}
-		if(micpw.length() > 16) {
+		if (micpw.length() > 16) {
 			model.addAttribute("errormessagePW", "パスワードが長すぎます");
 		}
 
-		if(model.getAttribute("errormessageID") != null ||
+		if (model.getAttribute("errormessageID") != null ||
 				model.getAttribute("errormessagePW") != null) {
 			return "miclogin";
 		}
@@ -74,7 +73,7 @@ public class MicLoginController {
 			return "redirect:/michome";
 		} else {
 			//失敗した場合、ログイン画面に再帰
-			model.addAttribute("errormessageLF","ログインに失敗しました");
+			model.addAttribute("errormessageLF", "ログインに失敗しました");
 			return "miclogin";
 		}
 
