@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+
 @Controller
 public class MicHomeController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
 	//コピペ用サンプル(ページ表示用メソッド)
-	 @RequestMapping(path = "/michome", method = RequestMethod.GET)
+	 @GetMapping("/michome")
 	    public String michome(Model model) {
 		//SELECT文の結果をしまうためのリスト
 		 List<Map<String, Object>> todoList;
@@ -27,15 +27,15 @@ public class MicHomeController {
 
 	        return "michome";
 	    }
-	@RequestMapping(path = "/micadd", method = RequestMethod.GET)
+	@GetMapping("/micadd")
 	public String copGet1() {
 		return "micadd";
 	}
-	@RequestMapping(path = "/micedit", method = RequestMethod.GET)
+	@GetMapping("/micedit")
 	public String copGet2() {
 		return "micedit";
 	}
-	@RequestMapping(path = "/micdel", method = RequestMethod.GET)
+	@GetMapping("/micdel")
 	public String copGet3() {
 		return "micdel";
 	}

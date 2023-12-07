@@ -5,8 +5,8 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MicUserController {
@@ -15,13 +15,13 @@ public class MicUserController {
 	JdbcTemplate jdbcTemplate;
 
 	//サンプル(ページ表示用メソッド)
-	@RequestMapping(path = "/micuser", method = RequestMethod.GET)
+	@GetMapping("/micuser")
 	public String copGet() {
 		return "micuser";
 	}
 
 	//サンプル（画面から何か入力をした時用）
-	@RequestMapping(path = "/micuser", method = RequestMethod.POST)
+	@PostMapping("/micuser")
 	public String copPost(String loginid, String password, Model model) {
 
 		String result = "登録完了";

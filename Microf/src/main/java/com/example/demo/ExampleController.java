@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ExampleController {
@@ -14,13 +14,13 @@ public class ExampleController {
 	JdbcTemplate jdbcTemplate;
 
 	//コピペ用サンプル(ページ表示用メソッド)
-	@RequestMapping(path = "/example", method = RequestMethod.GET)
+	@GetMapping("/example")
 	public String copGet() {
 		return "example";
 	}
 
 	//コピペ用サンプル（画面から何か入力をした時用）
-	@RequestMapping(path = "/example", method = RequestMethod.POST)
+	@PostMapping("/example")
 	public String copPost(String example1, String example2, Model model) {
 
 		//DBに繋ぐならこんな感じ(JdbcTemplate)
