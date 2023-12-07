@@ -19,6 +19,8 @@ public class MicHomeController {
 	//コピペ用サンプル(ページ表示用メソッド)
 	@RequestMapping(path = "/michome", method = RequestMethod.GET)
 	public String copGet(Model model) {
+
+
 		List<Map<String, Object>> resultList;
 		resultList = jdbcTemplate.queryForList("SELECT * FROM todo ");
 		model.addAttribute("resultList", resultList);
