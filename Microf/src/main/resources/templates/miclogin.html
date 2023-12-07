@@ -13,27 +13,23 @@
 </head>
 
 <body>
-	<div class="row">
-		<div class="col-4">左ブロック</div>
 		<div class="col-4">
-			<h1 style="font-family: 'DotGothic16', sans-serif;">削除用ページだよ</h1>
-			<h1 style="font-family: 'DotGothic16', sans-serif;">google font使ってるよ</h1>
+			<h1 style="font-family: 'DotGothic16', sans-serif;">ログインページ</h1>
 
 			<!--ここ大事！！！---->
-			<form th:action="@{/micdel}" method="POST">
+			<form th:action="@{/miclogin}" method="POST">
 				<div class="form-group">
-					<label for="example1">月</label>
-					<input type="text" name="month"><br>
+					<label for="micloginid">ID入力</label>
+					<input type="text" name="micloginid" maxlength="16"><br>
 
-					<label for="example2">日</label>
-					<input type="text" name="day"><br>
+					<label for="micpw">パスワード入力</label>
+					<input type="text" name="micpw" maxlength="16"><br>
 
-					<button type="submit" class="btn btn-primary">削除</button>
+					<button type="submit" class="btn btn-primary">送信</button>
 					</div>
 			</form>
 			<!---->
 		</div>
-
 	</div>
 </body>
 
