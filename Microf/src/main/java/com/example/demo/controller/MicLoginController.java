@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import jakarta.servlet.http.HttpSession;
+
 
 /**
  *
@@ -32,7 +34,7 @@ public class MicLoginController {
 
 	//idとパスワードが入力されたときの処理用メソッド
 	@PostMapping("/miclogin")
-	public String copPost(String micloginid, String micpw, Model model) {
+	public String copPost(String micloginid, String micpw, HttpSession session, Model model) {
 		/**
 		 * このメソッドで検索を行う。
 		 * micloginid → micloginテーブル内のloginidの検索条件(ユーザが入力した物)
@@ -53,6 +55,10 @@ public class MicLoginController {
 				model.getAttribute("errormessagePW") != null) {
 			return "miclogin";
 		}
+
+		//セッションにidとパスワードを登録する。
+		session.setAttribute("loginparam1", micloginid);
+		session.setAttribute("loginparam2", micpw);
 
 		//検索結果格納用のリスト
 		List<Map<String, Object>> resultList;
