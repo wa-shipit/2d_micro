@@ -15,10 +15,13 @@
 					<form th:action="@{/miclogin}" method="POST">
 						<div class="form-group border border-dark border-2 mt-2">
 							<div class="m-3">
+								<p th:text="${errormessageID}" class="text-danger"></p>
+								<p th:text="${errormessagePW}" class="text-danger"></p>
+								<p th:text="${errormessageLF}" class="text-danger"></p>
 								<label for="loginid">ログインID</label><br>
-								<input type="text" name="micloginid" maxlength="16" required><br>
+								<input type="text" name="micloginid" required><br>
 								<label for="pw">パスワード</label><br>
-								<input type="password" name="micpw" maxlength="16" required><br>
+								<input type="password" name="micpw" required><br>
 								<button type="submit" class="btn btn-primary mt-2">ログイン</button>
 							</div>
 						</div>

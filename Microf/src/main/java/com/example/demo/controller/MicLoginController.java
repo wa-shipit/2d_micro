@@ -38,9 +38,21 @@ public class MicLoginController {
 		 * micloginid → micloginテーブル内のloginidの検索条件(ユーザが入力した物)
 		 * micpw → micloginテーブル内のpasswordの検索条件(ユーザが入力した物)
 		 *
+		 * 最初に長さを測る。IDとパスワードのいずれかまたは両方が16文字より多い場合、
+		 * メッセージをmodelにいれてログインページを表示する。
 		 * ヒットした場合はホーム画面にリダイレクトをかける。
-		 * リスト内のidが空だった場合は再度ログインIDとパスワードを入力させる。
 		 */
+		if(micloginid.length() > 16) {
+			model.addAttribute("errormessageID", "IDが長すぎます");
+		}
+		if(micpw.length() > 16) {
+			model.addAttribute("errormessagePW", "パスワードが長すぎます");
+		}
+
+		if(model.getAttribute("errormessageID") != null ||
+				model.getAttribute("errormessagePW") != null) {
+			return "miclogin";
+		}
 
 		//検索結果格納用のリスト
 		List<Map<String, Object>> resultList;
@@ -56,6 +68,7 @@ public class MicLoginController {
 			return "redirect:/michome";
 		} else {
 			//失敗した場合、ログイン画面に再帰
+			model.addAttribute("errormessageLF","ログインに失敗しました");
 			return "miclogin";
 		}
 
