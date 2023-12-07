@@ -9,15 +9,22 @@
 </head>
 <body>
 	<main>
-		<div id="wrap">
-			<form th:action="@{/miclogin}" method="POST" class="form-group">
-				<label for="loginid">ログインID</label>
-				<input type="text" id="loginid"
-					name="micloginid" maxlength="16" required><br>
-				<label for="pw">パスワード</label>
-				<input type="password" id="pw" name="micpw" maxlength="16" required>
-				<input type="submit" value="ログイン">
-			</form>
+		<div class="row">
+			<div class="col-4"></div>
+				<div class="col-4">
+					<form th:action="@{/miclogin}" method="POST">
+						<div class="form-group border border-dark border-2 mt-2">
+							<div class="m-3">
+								<label for="loginid">ログインID</label><br>
+								<input type="text" name="micloginid" maxlength="16" required><br>
+								<label for="pw">パスワード</label><br>
+								<input type="password" name="micpw" maxlength="16" required><br>
+								<button type="submit" class="btn btn-primary mt-2">ログイン</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			<div class="col-4"></div>
 		</div>
 	</main>
 </body>
