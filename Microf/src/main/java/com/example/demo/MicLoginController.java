@@ -1,5 +1,9 @@
 package com.example.demo;
 
+
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -14,21 +18,19 @@ public class MicLoginController {
 	JdbcTemplate jdbcTemplate;
 
 	//コピペ用サンプル(ページ表示用メソッド)
-	@RequestMapping(path = "/michome", method = RequestMethod.GET)
+	@RequestMapping(path = "/miclogin", method = RequestMethod.GET)
 	public String copGet() {
-		return "example";
+		return "miclogin";
 	}
 
 	//コピペ用サンプル（画面から何か入力をした時用）
-	@RequestMapping(path = "/example", method = RequestMethod.POST)
-	public String copPost(String example1, String example2, Model model) {
+	@RequestMapping(path = "/miclogin", method = RequestMethod.POST)
+	public String copPost(String micloginid, String micpw, Model model) {
 
-		//DBに繋ぐならこんな感じ(JdbcTemplate)
-		//		List<Map<String, Object>> resultList = jdbcTemplate.queryForList("SELECT * FROM honyarara WHERE honyarara");
+//		DBに繋ぐならこんな感じ(JdbcTemplate)
+		List<Map<String, Object>> resultList;
+		resultList = jdbcTemplate.queryForList("SELECT * FROM miclogin WHERE loginid = ?, password  = ?;",micloginid,  micpw);
 
-		model.addAttribute("example1", example1);
-		model.addAttribute("example2", example2);
-
-		return "example";
+		return "redirect:/michome";
 	}
 }
