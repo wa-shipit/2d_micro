@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Mic User Login</title>
+	<style>
+		body {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<form action="/micuser" method="post">
+		<label for="loginid">ユーザーID:</label><br>
+		<input type="text" id="loginid" name="loginid" required maxlength="10"><br>
+		<label for="password">パスワード:</label><br>
+		<input type="password" id="password" name="password" required maxlength="10"><br>
+		<input type="submit" value="登録">
+	</form>
+	<p th:text="${message}"></p>
+</body>
+
+</html>
