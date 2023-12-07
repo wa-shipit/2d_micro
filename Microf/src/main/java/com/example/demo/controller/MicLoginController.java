@@ -43,15 +43,8 @@ public class MicLoginController {
 		 * メッセージをmodelにいれてログインページを表示する。
 		 * ヒットした場合はホーム画面にリダイレクトをかける。
 		 */
-		if (micloginid.length() > 16) {
-			model.addAttribute("errormessageID", "IDが長すぎます");
-		}
-		if (micpw.length() > 16) {
-			model.addAttribute("errormessagePW", "パスワードが長すぎます");
-		}
-
-		if (model.getAttribute("errormessageID") != null ||
-				model.getAttribute("errormessagePW") != null) {
+		if (micloginid.length() > 16 || micpw.length() > 16) {
+			model.addAttribute("errowmessageLF", "文字数が多すぎます");
 			return "miclogin";
 		}
 
