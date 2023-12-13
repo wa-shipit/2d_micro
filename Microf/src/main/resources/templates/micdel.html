@@ -1,5 +1,4 @@
-
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -16,32 +15,24 @@
 	rel="stylesheet">
 </head>
 
-<body style="font-size: 20px;">
+<body>
 	<div class="row">
 		<div class="col-4">
-			<h1 style="font-family: 'DotGothic16', sans-serif;">【TODOLIST】</h1>
+			<h1 style="font-family: 'DotGothic16', sans-serif;">予定を入力してください</h1>
+			<p th:text="${example1}"></p>
+			<!--ここ大事！！！---->
+			<form th:action="@{/micdel}" method="POST">
+				<div class="form-group">
+					<label for="month">月</label> <input type="text" name="month"><br>
 
-			<tr th:each="m : ${MicList}" style="font-size: 20px;">
-				<td th:text="${m.month}"></td>
-				<td th:text="${m.day}"></td>
-				<br>
-				<td th:text="${m.todo}"></td>
-				<br>
-			</tr>
+					<label for="day">日</label> <input type="text" name="day"><br>
 
+					<label for="todo">予定</label> <input type="text" name="todo"><br>
+					<button type="submit" class="btn btn-primary">送信</button>
+				</div>
+			</form>
+			<!---->
 		</div>
-		<div class="col-4">
-			<form th:action="@{/micadd}" method="GET">
-				<input type="submit" value="新規" class="botan">
-			</form>
-			<form th:action="@{/micedit}" method="GET">
-				<input type="submit" value="編集" class="botan">
-			</form>
-			<form th:action="@{/micdel}" method="GET">
-				<input type="submit" value="削除" class="botan">
-			</form>
-		</div>
-	</div>
 </body>
 
 </html>
