@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class MicLoginController {
 
@@ -22,7 +24,7 @@ public class MicLoginController {
 	}
 
 	@RequestMapping(path = "/miclogin", method = RequestMethod.POST)
-	public String LoginPost(String miclogin, String micpw, Model model) {
+	public String LoginPost(String miclogin, String micpw, Model model,HttpSession session) {
 
 
 
@@ -39,6 +41,7 @@ public class MicLoginController {
 			int count = resultList.size();
 
 			if (count > 0) {
+				session.setAttribute("loginparam1", miclogin);
 				return "redirect:/michome";
 			} else {
 				return "miclogin_ng";
