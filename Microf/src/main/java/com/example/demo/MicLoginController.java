@@ -44,8 +44,9 @@ public class MicLoginController {
 		 if (!resultList.isEmpty()) {
 		        return "redirect:/michome";
 		    } else {
+		    	 model.addAttribute("error", true);
 		    	 System.out.println("ログインに失敗しました");
-		        return "redirect:/miclogin";
+		        return "/miclogin";
 		    }
 		}
 	

@@ -23,7 +23,7 @@ public class MicTodoController {
 	public String micaddPost(String user_id, String month,String day,String todo, Model model) {
 
 		//DBに繋ぐならこんな感じ(JdbcTemplate)
-		jdbcTemplate.update("INSERT INTO todo (`user_id`, `month`, `day`, `todo`) VALUES (?,?,?,?)",user_id,month,day,todo);
+		jdbcTemplate.update("INSERT INTO todo ( `month`, `day`, `todo`) VALUES (?,?,?,?)",month,day,todo);
 
 
 
