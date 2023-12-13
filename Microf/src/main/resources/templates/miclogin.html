@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+</head>
+<style>
+    error-message {
+      color: red;
+    }
+  </style>
+
+<body>
+
+
+	<form th:action="@{/miclogin}" method="POST" onsubmit="return validateForm()">
+		<div class="form-group">
+			<label for="micloginid">ID</label>
+			 <input type="text"  id = "micloginid" name="micloginid"  required><br>
+				<label for="micpw">パスワード</label>
+				<input type="text" id = "micpw" name="micpw"  required><br>
+			<span id="errorMessage" class="error-message"></span>
+
+			<button type="submit" class="btn btn-primary">送信</button>
+			<br>
+			<p th:text="${fail}"></p>
+		</div>
+	</form>
+	<script>
+	function validateForm() {
+	    var micloginid = document.getElementById("micloginid").value;
+	    var micpw = document.getElementById("micpw").value;
+	    var errorMessage = document.getElementById("errorMessage");
+
+		if (micloginid.length > 16 || micpw.length > 16) {
+			errorMessage.textContent = "文字数が多すぎます";
+			return false;
+		} else {
+			errorMessage.textContent = "";
+			return true;
+		}
+	}
+	</script>
+
+</body>
+
+</html>
