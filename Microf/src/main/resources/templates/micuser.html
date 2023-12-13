@@ -1,0 +1,17 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>micuser</title>
+</head>
+<body>
+ユーザー登録。
+<!--ヒント：↓の?????は送る場所を指定しているよ。今回はどのControllerのどのURLに送りたいのかな-->
+	<form th:action="@{/micuser}" method="POST">
+
+		あなたのid(数値)：<input type="number" name="loginid"> <br>
+		あなたのパスワード：<input type="text" name="password"> <br>
+		<input type="submit">
+	</form>
+</body>
+</html>
