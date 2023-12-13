@@ -43,12 +43,13 @@ public class MicLoginController {
 		 * メッセージをmodelにいれてログインページを表示する。
 		 * ヒットした場合はホーム画面にリダイレクトをかける。
 		 */
+		//長さを計る
 		if (micloginid.length() > 16 || micpw.length() > 16) {
-			model.addAttribute("errowmessageLF", "文字数が多すぎます");
+			model.addAttribute("errormessageLF", "文字数が多すぎます");
 			return "miclogin";
 		}
 
-		//セッションにidとパスワードを登録する。
+		//セッションにidとパスワードを登録する。（ＡＰ５の仕様）
 		session.setAttribute("loginparam1", micloginid);
 		session.setAttribute("loginparam2", micpw);
 
