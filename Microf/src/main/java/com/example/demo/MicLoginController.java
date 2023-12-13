@@ -33,20 +33,6 @@ public class MicLoginController {
 		return "miclogin";
 	}
 
-	//コピペ用サンプル(ページ表示用メソッド)
-	@RequestMapping(path = "/michome", method = RequestMethod.GET)
-	public String michomeGet(Model model) {
-		// 名前に紐づいたデータが存在しない場合はnullを返します
-		String id = (String)this.session.getAttribute("micloginid");
-		// 名前に紐づいたデータが存在しない場合はnullを返します
-		String pw = (String)this.session.getAttribute("micpw");
-
-		model.addAttribute("micloginid", id);
-		model.addAttribute("micpw", pw);
-
-		return "michome";
-	}
-
 	//コピペ用サンプル（画面から何か入力をした時用）
 	@RequestMapping(path = "/miclogin", method = RequestMethod.POST)
 	public String copPost(String micloginid, String micpw, Model model) {
@@ -63,10 +49,10 @@ public class MicLoginController {
 				model.addAttribute("loginerror", "ログイン失敗");
 				return "miclogin";
 			} else {
-				String strid = micloginid.toString();
-				this.session.setAttribute("micloginid", strid);
-				String strpw = micpw.toString();
-				this.session.setAttribute("micpw", strpw);
+				String loginparam1 = micloginid.toString();
+				this.session.setAttribute("loginparam1", loginparam1);
+				String loginparam2 = micpw.toString();
+				this.session.setAttribute("loginparam2", loginparam2);
 				return "redirect:/michome";
 			}
 		}
