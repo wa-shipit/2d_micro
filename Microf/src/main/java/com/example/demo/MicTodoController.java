@@ -1,20 +1,13 @@
 package com.example.demo;
 
 import java.io.IOException;
-import java.util.Base64;
-import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class MicTodoController {
@@ -47,16 +40,15 @@ public class MicTodoController {
 	@RequestMapping(path = "/micedit", method = RequestMethod.POST)
 	public String Update1( String month, String day, String todo, Model model) throws IOException {
 
-	
-		
-		 jdbcTemplate.update("UPDATE todo SET month=?, day=?,todo=? WHERE user_id='999999'",
-	                month, day, todo);
+
+
+		 jdbcTemplate.update("UPDATE todo SET todo=? WHERE day=?AND month=?", todo,day,month);
 
 		return "redirect:/micedit";
 	}
 
 	// 削除画面表示
-	
+
 	@RequestMapping(path = "/micdel", method = RequestMethod.GET)
 	public String Delete() {
 		return "micdel";
@@ -65,10 +57,10 @@ public class MicTodoController {
 	// 削除処理
 
 	@RequestMapping(path = "/micdel", method = RequestMethod.POST)
-	public String Delete1(String day) throws IOException {
+	public String Delete1(String day,String month) throws IOException {
 
 		//データ削除SQL実行
-		jdbcTemplate.update("DELETE FROM todo WHERE day=?", day);
+		jdbcTemplate.update("DELETE FROM todo WHERE day=?AND month=?", day,month);
 
 		return "redirect:/micdel";
 	}

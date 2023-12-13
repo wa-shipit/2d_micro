@@ -17,18 +17,21 @@ public class MicLoginController {
 	JdbcTemplate jdbcTemplate;
 
 	@RequestMapping(path = "/miclogin", method = RequestMethod.GET)
-	public String copGet() {
+	public String LoginGet() {
 		return "miclogin";
 	}
 
 	@RequestMapping(path = "/miclogin", method = RequestMethod.POST)
-	public String copPost(String miclogin, String micpw, Model model) {
+	public String LoginPost(String miclogin, String micpw, Model model) {
+
+
+
 		int length = miclogin.length();
 		int length2 = micpw.length();
 		if (length < 17 && length2 < 17) {
 
 			List<Map<String, Object>> resultList = jdbcTemplate
-					.queryForList("SELECT * FROM miclogin WHERE loginid=? passward=?");
+					.queryForList("SELECT * FROM miclogin WHERE loginid=? AND password=?",miclogin,micpw);
 
 			model.addAttribute("miclogin", miclogin);
 			model.addAttribute("micpw", micpw);

@@ -14,12 +14,12 @@ public class MicUserController {
 	JdbcTemplate jdbcTemplate;
 
 	@RequestMapping(path = "/micuser", method = RequestMethod.GET)
-	public String copGet() {
+	public String UserGet() {
 		return "micuser";
 	}
 
 	@RequestMapping(path = "/micuser", method = RequestMethod.POST)
-	public String copPost(String loginid, String password, Model model) {
+	public String UserPost(String loginid, String password, Model model) {
 
 		 if (loginid.length() > 10 || password.length() > 10) {
 		        model.addAttribute("message", "IDおよびパスワードは10文字以内で入力してください。");
