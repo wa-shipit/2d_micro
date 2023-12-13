@@ -46,29 +46,9 @@ public class MicLoginController {
                 return "miclogin_ng";
             }
 
-<<<<<<< HEAD
-			model.addAttribute("miclogin", miclogin);
-			model.addAttribute("micpw", micpw);
 
-			int count = resultList.size();
-
-			if (count > 0) {
-				session.setAttribute("loginparam1", miclogin);
-				return "redirect:/michome";
-			} else {
-				return "miclogin_ng";
-			}
-
-		} else {
-			return "miclogin_ng2";
-		}
-
-	}
-}
-=======
         } else {
             return "miclogin_ng2";
         }
     }
 }
->>>>>>> branch 'isono' of https://github.com/wa-shipit/2d_micro.git
