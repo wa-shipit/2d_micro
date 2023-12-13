@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -25,9 +28,12 @@ public class MicTodoController {
 	public String addPost(String month, String day, String todo, Model model) {
 
 		//DBに繋ぐならこんな感じ(JdbcTemplate)
+		List<Map<String, Object>> resultList = jdbcTemplate.queryForList("SELECT * FROM todo WHERE month=? and day=?",month,day);
+
+		if(resultList.isEmpty()) {
 
 		jdbcTemplate.update("INSERT INTO todo  VALUES ('1',?,?,?);",month,day,todo);
-
+		}
 		model.addAttribute("month", month);
 		model.addAttribute("day", day);
 		model.addAttribute("todo", todo);
@@ -56,7 +62,7 @@ public class MicTodoController {
 
 		return "mictodo_edit";
 	}
-	
+
 	@RequestMapping(path = "/micdel", method = RequestMethod.GET)
 	public String delGet() {
 
