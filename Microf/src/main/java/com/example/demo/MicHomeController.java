@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class MicHomeController {
 
@@ -18,9 +20,10 @@ public class MicHomeController {
 
 	//コピペ用サンプル(ページ表示用メソッド)
 	@RequestMapping(path = "/michome", method = RequestMethod.GET)
-	public String michome(Model model) {
+	public String michome(Model model,HttpSession session) {
 
-		int userId= 999999;
+
+		String userId = (String) session.getAttribute("loginparam1");
 
 		//SELECT文の結果をしまうためのリスト
 		List<Map<String, Object>> resultList;
