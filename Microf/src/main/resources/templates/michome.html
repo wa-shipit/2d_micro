@@ -19,6 +19,8 @@
 		<div class="col-4">
 			<h1>【TODOLIST】</h1>
 			<th:block th:each="result : ${selectResult}">
+			<th:block th:each="result2 : ${selectResult2}">
+			<h2 th:text="'ログイン中のID:' + ${result2.loginid}"></h2>
 				<h1><p th:text="${result.month}+'月'+ ${result.day}+'の予定'"></p></h1>
 				<h1><p th:text="'・'+${result.todo}"></p></h1>
 			</th:block>

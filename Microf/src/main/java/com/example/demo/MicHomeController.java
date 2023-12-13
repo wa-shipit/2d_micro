@@ -25,12 +25,15 @@ public class MicHomeController {
 			
 			//SELECT文の結果をしまうためのリスト
 			List<Map<String, Object>> resultList;
+			List<Map<String, Object>> resultList2;
 
 			//SELECT文の実行
 			resultList = jdbcTemplate.queryForList("select * from todo");
+			resultList2 = jdbcTemplate.queryForList("select * from miclogin");
 
 			//実行結果をmodelにしまってHTMLで出せるようにする。
 			model.addAttribute("selectResult", resultList);
+			model.addAttribute("selectResult2", resultList2);
 
 
 			return "michome";
