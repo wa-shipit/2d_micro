@@ -1,4 +1,4 @@
-package controller;
+package com.example.demo.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -19,6 +19,7 @@ public class MicHomeController {
 	public String michomeGet(Model model) {
 		List<Map<String, Object>> resultList = jdbcTemplate.queryForList("SELECT * FROM todo");
 		model.addAttribute("MicList", resultList);
+
 		return "michome";
 	}
 
