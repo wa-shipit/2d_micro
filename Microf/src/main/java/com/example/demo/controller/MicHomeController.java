@@ -29,17 +29,17 @@ public class MicHomeController {
 	}
 
 	@GetMapping("/micadd")
-	public String copGet1() {
-		return "micadd";
+	public String micAddGetRedirect() {
+		return "mictodo_add";
 	}
 
 	@GetMapping("/micedit")
-	public String copGet2() {
-		return "micedit";
+	public String micEditGetRedirect() {
+		return "mictodo_edit";
 	}
 
 	@GetMapping("/micdel")
-	public String copGet3() {
-		return "micdel";
+	public String micDelGetRedirect() {
+		return "mictodo_del";
 	}
 }
