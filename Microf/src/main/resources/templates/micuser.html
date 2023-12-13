@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ユーザー登録</title>
+</head>
+<body>
+
+<h1>ユーザー登録</h1>
+<form th:action="@{/micuser}" method="POST">
+loginID：<input type="text" maxlength=10 name="loginid">
+password：<input type="password" maxlength=10 name="password">
+<input type="submit">
+</form>
+
+
+</body>
+</html>
