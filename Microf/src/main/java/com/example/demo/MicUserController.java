@@ -32,6 +32,6 @@ public class MicUserController {
 
 		//DBに接続して登録(JdbcTemplate)
 		jdbcTemplate.update("INSERT INTO miclogin (loginid,password) VALUES(?,?);", loginid, password);
-		return "redirect:/micuser";
+		return "redirect:/miclogin";
 	}
 }
