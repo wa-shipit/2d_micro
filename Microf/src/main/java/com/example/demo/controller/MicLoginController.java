@@ -30,6 +30,7 @@ public class MicLoginController {
 	@RequestMapping(path = "/miclogin", method = RequestMethod.POST)
 	public String micloginPost(String micloginid, String micpw, Model model,HttpSession session) {
 
+
 		if (micloginid.length() > 16 || micpw.length() > 16) {
 			model.addAttribute("moji", "文字数が多すぎます");
 			return "miclogin";
@@ -40,6 +41,12 @@ public class MicLoginController {
 					.queryForList("SELECT * FROM miclogin WHERE loginid = ? and password = ? ", micloginid, micpw);
 			System.out.println(resultList.size());
 			if (!CollectionUtils.isEmpty(resultList)) {
+				String id = (String) resultList.get(0).get("loginid");
+				String pw = (String) resultList.get(0).get("password");
+
+				session.setAttribute("loginparam1", id);
+				session.setAttribute("loginparam2", pw);
+
 				return "redirect:/michome";
 			} else {
 				model.addAttribute("error", "ログインに失敗しました");

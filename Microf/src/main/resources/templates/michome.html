@@ -36,7 +36,7 @@ body, html {
 	<div class="container">
 		<div class="left-panel">
 			<h1>【TODOLIST】</h1>
-
+		<div th:text="${session.loginparam1}+'さん'"  class="float_name"></div>
 			<th:block th:each="result : ${selectResult}">
 				<span th:text="${result.month}"></span>月
 		<span th:text="${result.day}"></span>日の予定
@@ -50,6 +50,6 @@ body, html {
 			<a th:href="@{/micdel}">削除</a> <br>
 		</div>
 	</div>
-	>>>>>>> branch 'kurihashi' of https://github.com/wa-shipit/2d_micro.git
+
 </body>
 </html>
