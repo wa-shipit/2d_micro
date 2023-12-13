@@ -3,16 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <title>ログイン</title>
-<link rel="stylesheet" type="text/css" href="">
+
+<title>Insert title here</title>
+<style>
+body, html {
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+}
+
+.container {
+	display: flex;
+	height: 100%;
+}
+
+.left-panel, .right-panel {
+	overflow-y: auto;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.left-panel {
+	flex: 7;
+}
+
+.right-panel {
+	flex: 3;
+}
+</style>
 </head>
 <body>
+	<div class="container">
+		<div class="left-panel">
+			<h1>【TODOLIST】</h1>
 
-
-
-	<h1>ログイン画面</h1>
-	<p>ログイン成功</p>
-
-
-
+			<th:block th:each="result : ${selectResult}">
+				<span th:text="${result.month}"></span>月
+		<span th:text="${result.day}"></span>日の予定
+		<p th:text="${result.todo}"></p>
+				<hr>
+			</th:block>
+		</div>
+		<hr>
+		<div class="right-panel">
+			<a th:href="@{/micadd}">新規登録</a><br> <a th:href="@{/micedit}">編集</a><br>
+			<a th:href="@{/micdel}">削除</a> <br>
+		</div>
+	</div>
+	>>>>>>> branch 'kurihashi' of https://github.com/wa-shipit/2d_micro.git
 </body>
 </html>
