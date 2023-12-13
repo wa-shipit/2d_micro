@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MicHome</title>
+</head>
+<body>
+	【TODOLIST】<br>
+	<th:block th:each="result : ${selectResult}">
+	<font th:text="${result.month}"></font>月<font th:text="${result.day}"></font>日の予定
+	<br th:text="${result.todo}"></br>
+
+	<a href= "/micadd">新規登録</a>
+	<a href= "/micedit">編集</a>
+	<a href= "/micdel">削除</a>
+</body>
+</html>
