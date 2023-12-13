@@ -1,39 +1,60 @@
 package com.example.demo;
 
-	import java.util.List;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-	import org.springframework.jdbc.core.JdbcTemplate;
-	import org.springframework.stereotype.Controller;
-	import org.springframework.ui.Model;
-	import org.springframework.web.bind.annotation.RequestMapping;
-	import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
-	@Controller
-	public class MicLoginController {
+import jakarta.servlet.http.HttpSession;
 
-		@Autowired
-		JdbcTemplate jdbcTemplate;
 
-		//コピペ用サンプル(ページ表示用メソッド)
-		@RequestMapping(path = "/miclogin", method = RequestMethod.GET)
-		public String copGet() {
-			return "miclogin";
-		}
 
-		//コピペ用サンプル（画面から何か入力をした時用）
-		@RequestMapping(path = "/miclogin", method = RequestMethod.POST)
-		public String copPost(String micloginid, String micpw, Model model) {
+@Controller
+public class MicLoginController {
+	@Autowired
+	JdbcTemplate jdbcTemplate;
 
-			//DBに繋ぐならこんな感じ(JdbcTemplate)
-	List<Map<String, Object>> resultList = jdbcTemplate.queryForList("SELECT * FROM miclogin  WHERE loginid = ? and password = ?",micloginid,micpw);
 
-			model.addAttribute("example1", micloginid);
-			model.addAttribute("example2", micpw);
+	@GetMapping("/miclogin")
+	public String micLoginGet() {
 
-			return "michome";
-		}
+		return "miclogin";
 	}
 
 
+	@PostMapping("/miclogin")
+	public String micLoginPost(String micloginid, String micpw, HttpSession session, Model model) {
+
+		if (micloginid.length() > 16 || micpw.length() > 16) {
+			model.addAttribute("errormessageLF", "文字数多");
+			return "miclogin";
+		}
+
+
+		session.setAttribute("loginparam1", micloginid);
+		session.setAttribute("loginparam2", micpw);
+
+
+		List<Map<String, Object>> resultList;
+
+		resultList = jdbcTemplate.queryForList("SELECT * FROM miclogin WHERE loginid = ? AND password = ? ",
+				micloginid,
+				micpw);
+
+
+		if (resultList.size() != 0) {
+
+			return "redirect:/michome";
+
+		} else {
+         model.addAttribute("errormessageLF", "失敗");
+			return "miclogin";
+		}
+
+	}
+}
