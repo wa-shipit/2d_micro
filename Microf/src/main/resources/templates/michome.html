@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div class="col-4">
+        <center>【TODOLIST】<br><br>
+        <th:block th:each="result : ${resultList}">
+            12月1日の予定<p th:text="${result.todo}"></p>
+            12月2日の予定<p th:text="${result.todo}"></p></center>
+        </th:block>
+    </div>
+
+    <div style="position: absolute; top: 0; right: 0;">
+        <a href="#" id="addLink">新規登録</a><br>
+        <a href="#" id="editLink">編集</a><br>
+        <a href="#" id="delLink">削除</a><br>
+    </div>
+
+    <script>
+        document.getElementById("addLink").onclick = function () {
+            location.href = "/micadd";
+        };
+
+        document.getElementById("editLink").onclick = function () {
+            location.href = "/micedit";
+        };
+
+        document.getElementById("delLink").onclick = function () {
+            location.href = "/micdel";
+        };
+    </script>
+</body>
+
+</html>
