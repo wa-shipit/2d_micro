@@ -29,12 +29,17 @@ a {
 a:hover {
 	color: orange; /* ホバー時の色 */
 }
+div{
+float:right;
+margin: 0 50px 0 0 ;
+}
+
 </style>
 </head>
 <body>
 	<h1>【ToDoLIst】</h1>
 	<h2 th:text="${userId}+'さんの予定です '"></h2>
-	<div class=wrap>
+
 		<table border="1">
 			<thead>
 				<tr>
@@ -59,8 +64,10 @@ a:hover {
 
 			<a th:href="@{/micadd}" th:text="新規リンク"></a><br> <a
 				th:href="@{/micedit}" th:text="編集リンク"></a><br> <a
-				th:href="@{/micdel}" th:text="削除リンク"></a>
+				th:href="@{/micdel}" th:text="削除リンク"></a><br>
+				<a
+				th:href="@{/miclogin}" th:text="ログアウト"></a>
+
 		</div>
-	</div>
 </body>
 </html>
