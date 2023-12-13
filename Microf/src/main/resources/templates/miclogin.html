@@ -2,6 +2,7 @@
 <html>
 
 <head>
+	<title>ログイン</title>
 	<meta charset="UTF-8">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -17,30 +18,49 @@
 	<h1>ログインアプリだよぉぉぉぉぉぉぉ</h1>
 	
 	<div class="row">
-<!--		<div class="col-4">左ブロック</div>-->
-<!--		<div class="col-4">-->
-<!--			<h1 style="font-family: 'DotGothic16', sans-serif;">サンプル用ページだよ</h1>-->
-<!--			<h1 style="font-family: 'DotGothic16', sans-serif;">google font使ってるよ</h1>-->
 
 
 			<!--ここ大事！！！-->
-			<form th:action="@{/miclogin}" method="POST">
+			<form th:action="@{/login}" method="POST">
 				<div class="form-group">
-					<label for="ID">ID</label>
-					<input type="text" name="micloginid"><br>
+					 ID<input type="text" id="textInput" name="micloginid"><br>
+					<p id="errorMessage" style="color: red; display: none;">文字数が多すぎます</p><br>
 
-					<label for="password">password</label>
-					<input type="text" name="micpw"><br>
+
+					 PASS<input type="text" id="passInput" name="micpw"><br>
+					<p id="errorMessage" style="color: red; display: none;">文字数が多すぎます</p><br>
 
 					<button type="submit" class="btn btn-primary">送信</button>
 					</div>
 			</form>
 			<!---->
 		</div>
-<!--		<div class="col-4">-->
-<!--			右ブロック<br>-->
+		<!--		<div class="col-4">-->
+<!--		右ブロック<br>-->
 <!--		</div>-->
 	</div>
+	  <script>
+    document.getElementById("textInput").oninput = function() {
+      var inputText = this.value;
+      var errorMessage = document.getElementById("errorMessage");b
+
+      if (inputText.length >= 16) {
+        errorMessage.style.display = "block";
+      } else {
+        errorMessage.style.display = "none";
+      }
+    };
+      document.getElementById("passInput").oninput = function() {
+      var inputText = this.value;
+      var errorMessage = document.getElementById("errorMessage");b
+
+      if (inputPass.length >= 16) {
+        errorMessage.style.display = "block";
+      } else {
+        errorMessage.style.display = "none";
+      }
+    };
+  </script>
 </body>
 
 </html>

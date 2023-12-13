@@ -1,9 +1,6 @@
 package com.example.demo;
 
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -17,20 +14,32 @@ public class MicLoginController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
-	//コピペ用サンプル(ページ表示用メソッド)
-	@RequestMapping(path = "/miclogin", method = RequestMethod.GET)
+	//login
+	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String copGet() {
 		return "miclogin";
 	}
 
-	//コピペ用サンプル（画面から何か入力をした時用）
-	@RequestMapping(path = "/miclogin", method = RequestMethod.POST)
+	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	public String copPost(String micloginid, String micpw, Model model) {
 
 //		DBに繋ぐならこんな感じ(JdbcTemplate)
-		List<Map<String, Object>> resultList;
-		resultList = jdbcTemplate.queryForList("SELECT * FROM miclogin WHERE loginid = ?, password  = ?;",micloginid,  micpw);
+		jdbcTemplate.queryForList("SELECT * FROM miclogin WHERE loginid = ? AND password  = ?;",micloginid,  micpw);
 
-		return "redirect:/michome";
+		model.addAttribute("id", micloginid);
+		model.addAttribute("pass", micpw);
+		
+	return "redirect:/michome";
+		
+		//ログイン成功時と失敗時のやり方わからん
+		
+//		if () {
+//            // ログイン成功時の処理
+//            return "redirect:/michome"; // michomeへのリダイレクト
+//        } else {
+//            // ログイン失敗時の処理
+//            model.addAttribute("errorMessage", "ログインに失敗しました");
+//            return "miclogin"; // ログインページを再表示
+//        }
 	}
 }
