@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>編集</title>
+</head>
+
+<body>
+	<h1>編集</h1>
+	<form action="/micedit" method="post">
+		<label for="month">月:</label>
+		<input type="text" id="month" name="month" required>
+
+		<label for="day">日:</label>
+		<input type="text" id="day" name="day" required>
+
+		<label for="schedule">予定:</label>
+		<input type="text" id="schedule" name="schedule" required>
+
+		<button type="submit">更新</button>
+	</form>
+</body>
+
+</html>
