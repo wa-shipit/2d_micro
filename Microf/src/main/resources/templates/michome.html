@@ -13,22 +13,25 @@
 </head>
 
 <body>
+	<div class="row">
 		<div class="col-4">
-			<h1 style="font-family: 'DotGothic16', sans-serif;">ログインページ</h1>
+			<h1>【TODOリスト】</h1>
 
 			<!--ここ大事！！！---->
-			<form th:action="@{/miclogin}" method="POST">
-				<div class="form-group">
-					<label for="micloginid">ID入力</label>
-					<input type="text" name="micloginid" maxlength="16"><br>
+				<tr th:each="result: ${resutList}">
+			<p th:text="${result.month}">月</p>
+			<p th:text="${result.day}">日の予定</p><br>
+			<p>・</p> <p th:text="${result.todo}"></p>
+		</tr>
 
-					<label for="micpw">パスワード入力</label>
-					<input type="text" name="micpw" maxlength="16"><br>
 
-					<button type="submit" class="btn btn-primary">送信</button>
-					</div>
 			</form>
 			<!---->
+		</div>
+		<div class="col-4">
+			<a href = micadd.html>新規登録</a><br>
+			<a href = micedit.html>編集</a><br>
+			<a href = micdel.html>削除</a><br>
 		</div>
 	</div>
 </body>
