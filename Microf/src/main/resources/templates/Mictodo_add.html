@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>マイク トゥドゥーー</title>
+</head>
+
+
+	<h2>予定</h2>
+	<form th:action="@{/micadd}" method="POST" enctype="multipart/form-data">
+
+		月：<input type="text" name="month"> <br>
+		日：<input type="text" name="day"> <br>
+		予定：<input type="text" name="todo"><br>
+		<input type="submit">
+	</form>	
+	</th:block>
+</body>
+
+</html>
