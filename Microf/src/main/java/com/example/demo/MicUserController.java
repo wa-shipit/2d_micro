@@ -25,16 +25,19 @@ public class MicUserController {
 	public String copPost(String loginid, String password, Model model) {
 
 		String result = "登録完了";
+		String error = "";
 		try {
 			//DBに繋ぐならこんな感じ(JdbcTemplate)
 			jdbcTemplate.update("INSERT INTO miclogin VALUES(?,?);",loginid,password);
 		}catch(DuplicateKeyException e) {
 			System.out.println("id重複エラーです。");
-			result = "idが重複しています";
+			result = "";
+			error = "idが重複しています";
 		}
 
 
 		model.addAttribute("result", result);
+		model.addAttribute("error", error);
 		//入力値確認
 //		model.addAttribute("loginid", loginid);
 //		model.addAttribute("password", password);
