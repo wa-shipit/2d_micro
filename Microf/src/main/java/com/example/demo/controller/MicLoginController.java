@@ -24,7 +24,7 @@ public class MicLoginController {
 
 	//ページ表示用メソッド
 	@GetMapping("/miclogin")
-	public String copGet() {
+	public String micLoginGet() {
 		/**
 		 * このメソッドでログインページを表示させる。
 		 */
@@ -33,7 +33,7 @@ public class MicLoginController {
 
 	//idとパスワードが入力されたときの処理用メソッド
 	@PostMapping("/miclogin")
-	public String copPost(String micloginid, String micpw, HttpSession session, Model model) {
+	public String micLoginPost(String micloginid, String micpw, HttpSession session, Model model) {
 		/**
 		 * このメソッドで検索を行う。
 		 * micloginid → micloginテーブル内のloginidの検索条件(ユーザが入力した物)

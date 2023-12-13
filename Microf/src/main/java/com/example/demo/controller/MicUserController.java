@@ -27,17 +27,16 @@ public class MicUserController {
 		String result = "登録完了";
 		try {
 			//DBに繋ぐならこんな感じ(JdbcTemplate)
-			jdbcTemplate.update("INSERT INTO miclogin VALUES(?,?);",loginid,password);
-		}catch(DuplicateKeyException e) {
+			jdbcTemplate.update("INSERT INTO miclogin VALUES(?,?);", loginid, password);
+		} catch (DuplicateKeyException e) {
 			System.out.println("id重複エラーです。");
 			result = "idが重複しています";
 		}
 
-
 		model.addAttribute("result", result);
 		//入力値確認
-//		model.addAttribute("loginid", loginid);
-//		model.addAttribute("password", password);
+		//		model.addAttribute("loginid", loginid);
+		//		model.addAttribute("password", password);
 
 		return "micuser";
 	}

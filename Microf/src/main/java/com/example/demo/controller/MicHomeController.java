@@ -15,26 +15,29 @@ public class MicHomeController {
 	JdbcTemplate jdbcTemplate;
 
 	//コピペ用サンプル(ページ表示用メソッド)
-	 @GetMapping("/michome")
-	    public String michome(Model model) {
+	@GetMapping("/michome")
+	public String michome(Model model) {
 		//SELECT文の結果をしまうためのリスト
-		 List<Map<String, Object>> todoList;
-		 //SELECT文の実行
-		 todoList = jdbcTemplate.queryForList("SELECT * FROM todo");
-		 //実行結果をmodelにしまってHTMLで出せるようにする。
-	        // todoListをモデルに追加
-	        model.addAttribute("todoList", todoList);
+		List<Map<String, Object>> todoList;
+		//SELECT文の実行
+		todoList = jdbcTemplate.queryForList("SELECT * FROM todo");
+		//実行結果をmodelにしまってHTMLで出せるようにする。
+		// todoListをモデルに追加
+		model.addAttribute("todoList", todoList);
 
-	        return "michome";
-	    }
+		return "michome";
+	}
+
 	@GetMapping("/micadd")
 	public String copGet1() {
 		return "micadd";
 	}
+
 	@GetMapping("/micedit")
 	public String copGet2() {
 		return "micedit";
 	}
+
 	@GetMapping("/micdel")
 	public String copGet3() {
 		return "micdel";
