@@ -1,11 +1,11 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 
@@ -14,12 +14,12 @@ public class MicTodoController {
 	JdbcTemplate jdbcTemplate;
 
 	//登録
-	@RequestMapping(path = "/micadd", method = RequestMethod.GET)
+	@GetMapping("/micadd")
 	public String copGet1() {
-		return "mictodotouroku";
+		return "mictodoadd";
 	}
 
-	@RequestMapping(path = "/micadd", method = RequestMethod.POST)
+	@PostMapping("/micadd")
 	public String micaddPost(String user_id, String month, String day, String todo, Model model) {
 
 		jdbcTemplate.update("INSERT INTO todo (`user_id`, `month`, `day`, `todo`) VALUES (?,?,?,?)", user_id, month,
@@ -29,12 +29,12 @@ public class MicTodoController {
 	}
 
 	//編集
-	@RequestMapping(path = "/micedit", method = RequestMethod.GET)
+	@GetMapping("/micedit")
 	public String copGet2() {
-		return "mictodohennsyu";
+		return "mictodoedit";
 	}
 
-	@RequestMapping(path = "/micedit", method = RequestMethod.POST)
+	@PostMapping("/micedit")
 	public String copPost2(String user_id, String month, String day, String todo, Model model) {
 
 		jdbcTemplate.update("UPDATE todo SET todo = ? WHERE month = ? AND DAY = ?", todo, month, day);
@@ -43,16 +43,16 @@ public class MicTodoController {
 	}
 
 	//削除
-	@RequestMapping(path = "/micedel", method = RequestMethod.GET)
+	@GetMapping("/micedel")
 	public String copGet3() {
-		return "mictodosakujyo";
+		return "mictododel";
 	}
 
 	//削除
-	@RequestMapping(path = "/micdel", method = RequestMethod.POST)
+	@PostMapping("/micdel")
 	public String micdelPost(String user_id, String month, String day, String todo, Model model) {
 
 		jdbcTemplate.update("DELETE FROM todo WHERE month = ? AND day =?", month, day);
-		return "mictodosakujyo";
+		return "redirect:/micdel";
 	}
 }
