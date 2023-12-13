@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -16,29 +16,32 @@
 	<div class="row">
 		<div class="col-4">左ブロック</div>
 		<div class="col-4">
-			<h1 style="font-family: 'DotGothic16', sans-serif;">サンプル用ページだよ</h1>
-			<h1 style="font-family: 'DotGothic16', sans-serif;">google font使ってるよ</h1>
+			<h1 style="font-family: 'DotGothic16', sans-serif;">予定編集</h1>
 
-			
-			<form th:action="@{/example}" method="POST">
+			<!--ここ大事！！！---->
+			<form th:action="@{/micedit}" method="POST">
 				<div class="form-group">
-					<label for="example1">入力欄1</label>
-					<input type="text" name="example1"><br>
+					<label for="month">月</label>
+					<input type="text" name="month"><br>
 
-					<label for="example2">入力欄2</label>
-					<input type="text" name="example2"><br>
+					<label for="day">日</label>
+					<input type="text" name="day"><br>
+					
+					<label for="todo">予定</label>
+					<input type="text" name="todo"><br>
 
 					<button type="submit" class="btn btn-primary">送信</button>
 					</div>
 			</form>
-			
+			<!---->
 		</div>
 		<div class="col-4">
 			右ブロック<br>
-			入力欄1の入力内容<p th:text="${example1}"></p>
-			入力欄2の入力内容<p th:text="${example2}"></p>
+			月の入力内容<p th:text="${month}"></p>
+			日の入力内容<p th:text="${day}"></p>
+			予定の入力内容<p th:text="${todo}"></p>
 		</div>
 	</div>
 </body>
 
-</html>-->
+</html>
