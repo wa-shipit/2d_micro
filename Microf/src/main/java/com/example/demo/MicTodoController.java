@@ -28,7 +28,13 @@ public class MicTodoController {
 	public String copPost(String month, String day, String todo, Model model) {
 
 		//DBに繋ぐならこんな感じ(JdbcTemplate)
+		List<Map<String, Object>> resultList = jdbcTemplate.queryForList("SELECT * FROM todo WHERE month = ? AND day = ?", month, day);
+
+		// 既存のデータがない場合にのみINSERT文を実行
+	    if (resultList.isEmpty()) {
 		jdbcTemplate.update("INSERT INTO todo(user_id,month,day,todo) values(?, ? , ?, ?)", 999, month, day, todo);
+	    }
+
 
 		model.addAttribute("month", month);
 		model.addAttribute("day", day);
@@ -48,7 +54,7 @@ public class MicTodoController {
 	public String copPost1(String month, String day, String todo, String user_id, Model model) {
 
 		//DBに繋ぐならこんな感じ(JdbcTemplate)
-		jdbcTemplate.update("UPDATE todo SET month=?, day=?, todo=? WHERE user_id=?", month, day, todo, user_id);
+		jdbcTemplate.update("UPDATE todo SET todo=? WHERE month=? AND day=?", todo, month, day);
 
 		model.addAttribute("month", month);
 		model.addAttribute("day", day);
@@ -68,11 +74,11 @@ public class MicTodoController {
 	public String copPost2(String month, String day, String todo, Model model) {
 
 		//DBに繋ぐならこんな感じ(JdbcTemplate)
-		jdbcTemplate.update("");
+		jdbcTemplate.update("DELETE FROM todo WHERE month=? AND day=?", month, day);
+
 
 		model.addAttribute("month", month);
 		model.addAttribute("day", day);
-		model.addAttribute("todo", todo);
 
 		return "mictodo_del";
 	}
