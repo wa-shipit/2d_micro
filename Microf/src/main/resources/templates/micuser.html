@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>新規ユーザー登録</h2>
+
+	<form th:action="@{/micuser}" method="POST">
+		<div class="form-group">
+			<p>
+				<label for="micloginid">ID</label> <input type="text"
+					name="micloginid" maxlength="10">
+			</p>
+			<p>
+				<label for="micpw">パスワード</label> <input type="password" name="micpw"
+					maxlength="10">
+			</p>
+
+			<button type="submit" class="btn btn-primary">送信</button>
+		</div>
+	</form>
+
+
+
+
+</body>
+</html>
