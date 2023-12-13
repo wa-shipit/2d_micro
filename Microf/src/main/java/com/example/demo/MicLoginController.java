@@ -48,8 +48,5 @@ public class MicLoginController {
 		        return "redirect:/miclogin";
 		    }
 		}
-	@RequestMapping(path = "/michome", method = RequestMethod.GET)
-	public String michome() {
-		return "michome";
-	}
+	
 }
