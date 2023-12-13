@@ -1,8 +1,10 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,13 +20,16 @@ public class MicHomeController {
 	JdbcTemplate jdbcTemplate;
 
 	@RequestMapping(path = "/michome", method = RequestMethod.GET)
-	public String michome(Model model) throws IOException {
+	public String michome(Model model, HttpSession session) throws IOException {
 		List<Map<String, Object>> resultList;
 
 		//SELECT文の実行
 		resultList = jdbcTemplate.queryForList("select * from todo");
 
 		//実行結果をmodelにしまってHTMLで出せるようにする。
+		//String loginid = (String) session.getAttribute("loginid");
+		String loginid = "9999";
+		model.addAttribute("loginid", loginid);
 		model.addAttribute("selectResult", resultList);
 
 		return "michome";

@@ -1,52 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-body, html {
-	height: 100%;
-	margin: 0;
-	overflow: hidden;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO List</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
 
-.container {
-	display: flex;
-	height: 100%;
-}
+    .container {
+      display: flex;
+      height: 100%;
+    }
 
-.left-panel, .right-panel {
-	overflow-y: auto;
-	padding: 20px;
-	box-sizing: border-box;
-}
+    .left-panel, .right-panel {
+      overflow-y: auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
 
-.left-panel {
-	flex: 7;
-}
+    .left-panel {
+      flex: 7;
+      background-color: #f0f0f0;
+    }
 
-.right-panel {
-	flex: 3;
-}
-</style>
+    .right-panel {
+      flex: 3;
+      background-color: #e0e0e0;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .todo-item {
+      margin-bottom: 10px;
+    }
+
+    hr {
+      border: 1px solid #ccc;
+    }
+
+    .menu-links {
+      margin-top: 20px;
+    }
+
+    .menu-links a {
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-	<div class="container">
-		<div class="left-panel">
-			<h1>【TODOLIST】</h1>
+  <div class="container">
+    <div class="left-panel">
+      <h1>【TODOLIST】</h1>
 
-			<th:block th:each="result : ${selectResult}">
-				<span th:text="${result.month}"></span>月
-		<span th:text="${result.day}"></span>日の予定
-		<p th:text="${result.todo}"></p>
-				<hr>
-			</th:block>
-		</div>
-		<hr>
-		<div class="right-panel">
-			<a th:href="@{/micadd}">新規登録</a><br> <a th:href="@{/micedit}">編集</a><br>
-			<a th:href="@{/micdel}">削除</a> <br>
-		</div>
-	</div>
+      <p>ログインID：<span th:text="${loginid}"></span></p>
+      <th:block th:each="result : ${selectResult}">
+        <div class="todo-item">
+          <span th:text="${result.month}"></span>月
+          <span th:text="${result.day}"></span>日の予定
+          <p th:text="${result.todo}"></p>
+          <hr>
+        </div>
+      </th:block>
+    </div>
+    <div class="right-panel">
+      <div class="menu-links">
+        <a th:href="@{/micadd}">新規登録</a>
+        <a th:href="@{/micedit}">編集</a>
+        <a th:href="@{/micdel}">削除</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
