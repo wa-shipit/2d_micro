@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #fafafa;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	color: #3897f0;
+}
+
+form {
+	max-width: 300px;
+	margin: 20px auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+	display: block;
+	text-align: left;
+	margin: 10px 0;
+	color: #555;
+}
+
+input {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 15px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+input[type="submit"] {
+	background-color: #3897f0;
+	color: #fff;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #2a5caa;
+}
+</style>
+<title>Registration Form</title>
+<script>
+	function validateForm() {
+		var loginid = document.getElementById("loginid").value;
+		var password = document.getElementById("password").value;
+
+		if (userId.length > 10 || password.length > 10) {
+			alert("ユーザIDとパスワードはそれぞれ10文字以内で入力してください。");
+			return false;
+		}
+
+		return true;
+	}
+</script>
+</head>
+<body>
+	<h1>Registration Form</h1>
+	<form th:action="@{/micuser}" method="post"
+		onsubmit="return validateForm()">
+		<label for="loginid">ユーザID:</label> <input type="text" id="loginid"
+			name="loginid" maxlength="15" placeholder="10文字以内で設定してください" required><br>
+		<label for="password">パスワード:</label> <input type="password"
+			id="password" name="password" maxlength="15"
+			placeholder="10文字以内で設定してください" required><br> <input
+			type="submit" value="登録">
+	</form>
+	<p th:text=${error}></p>
+
+</body>
+</html>
